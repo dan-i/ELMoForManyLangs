@@ -238,7 +238,7 @@ def test_main():
     for output_layer in output_layers:
       filename = '{0}.ly{1}.{2}'.format(args.output_prefix, output_layer, output_format)
       handlers[output_format, output_layer] = \
-        h5py.File(filename, 'w') if output_format == 'hdf5' else open(filename, 'w')
+        h5py.File(filename, 'w') if output_format == 'hdf5' else open(filename, 'w', encoding='utf-8')
 
   for w, c, lens, masks, texts in zip(test_w, test_c, test_lens, test_masks, test_text):
     output = model.forward(w, c, masks)
